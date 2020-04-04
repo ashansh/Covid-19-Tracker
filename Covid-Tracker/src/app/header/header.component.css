@@ -1,0 +1,74 @@
+.header-container {
+    margin-bottom: 5%;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.header {
+    display: flex; 
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+.header-image {
+    width: 50px;
+}
+
+.title-text {
+    font-size: large;
+    font-weight: 800;
+    color: grey;
+    padding-top: 15px;
+    margin-left: 15px;
+}
+.description-container {
+    display: flex;
+    flex-direction: column;
+    font-size: smaller;
+    margin-bottom: 5%;
+}
+.countries {
+    font-size: medium;
+    margin-bottom: 2%;
+    font-weight: 600;
+}
+
+.description {
+    text-align: justify;
+}
+
+.date-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.date-updates {
+    font-size: medium;
+    margin-bottom: 1%;
+    text-align: center;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: rgb(241, 20, 20);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 2%;
+}
+
+.date-text {
+    color: gray;
+    text-align: center;
+}
+
+.date-update {
+    font-size: medium;
+    color: gray;
+    text-align: center;
+    margin-bottom: 1%;
+}
+
+.date-updates-text {
+    font-size: smaller;
+}
