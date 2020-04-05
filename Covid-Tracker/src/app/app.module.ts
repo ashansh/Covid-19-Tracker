@@ -9,9 +9,13 @@ import { FooterComponent } from './footer/footer.component';
 import { NewsSectionComponent } from './news-section/news-section.component';
 import { NumberCardsComponent } from './number-cards/number-cards.component';
 import { AnalyticalChartsComponent } from './analytical-charts/analytical-charts.component';
+import { IndiaDemographicsComponent } from './india-demographics/india-demographics.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TrendModule } from 'ngx-trend';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -20,7 +24,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     FooterComponent,
     NewsSectionComponent,
     NumberCardsComponent,
-    AnalyticalChartsComponent
+    AnalyticalChartsComponent,
+    IndiaDemographicsComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +34,9 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     FormsModule,
     NgxChartsModule,
     BrowserAnimationsModule,
+    FontAwesomeModule,
+    TrendModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,83 @@
+.trend-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5%;
+}
+
+.demographics-title {
+    text-align: center;
+    color: #5f5f5f;
+    font-weight: 700;
+    margin-bottom: 5%;
+}
+
+.new-infected {
+    font-size: 12px;
+    color: #cc0000;
+    margin-bottom: 2%;
+}
+
+.total-infected {
+    font-size: 16px;
+    color: #cc0000;
+    margin-bottom: 2%;
+}
+
+.infected-text {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    color: #cc0000;
+}
+.new-recovered {
+    font-size: 12px;
+    color: #32cd32;
+    margin-bottom: 2%;
+}
+
+.total-recovered {
+    font-size: 16px;
+    color: #32cd32;
+    margin-bottom: 2%;
+}
+
+.recovered-text {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    color: #32cd32;
+}
+
+.new-active {
+    font-size: 12px;
+    color: #148aff;
+    margin-bottom: 2%;
+}
+
+.total-active {
+    font-size: 16px;
+    color: #148aff;
+    margin-bottom: 2%;
+}
+
+.active-text {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    color: #148aff;
+}
+
+.new-deaths {
+    font-size: 12px;
+    color: #787878;
+    margin-bottom: 2%;
+}
+
+.total-deaths {
+    font-size: 16px;
+    color: #787878;
+    margin-bottom: 2%;
+}
+
+.deaths-text {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    color: #787878;
+}

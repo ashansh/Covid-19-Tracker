@@ -1,17 +1,21 @@
 <div class="header-container">
     <div class="header">
-    <img class="header-image" src="assets/covid-19.png">
+    <img id="loading" src="assets/covid-19_mobile.png">
     <span class="title-text">COVID-19 TRACKER</span>
+    <div class="social-message">
+        <span># STAY HOME</span>
+        <span># STAY SAFE</span>
+    </div>
     </div>
     <div class="description-container">
         <span class="countries">188+ Countries Affected By</span>
-        <span class="description">Coronaviruses (CoV) are a large family of viruses that cause illness ranging from the common cold to more severe diseases. A novel coronavirus (nCoV) is a new strain that has not been previously identified in humans.
+        <span class="description"><strong>Coronaviruses</strong> (CoV) are a large family of viruses that cause illness ranging from the common cold to more severe diseases. A novel coronavirus (nCoV) is a new strain that has not been previously identified in humans.
            On 11 March 2020, the world health organization (WHO) declared the outbreak a pandemic.</span>
     </div>
     <div class="date-container" *ngIf="updatedDate.length">
         <div class="date-updates">
             <span class="dot"></span>
-            <span class="date-text">Last updated on</span>
+            <span class="date-text">Last updated on :</span>
         </div>
         <span class="date-update">{{updatedDate |  date: 'medium'}}</span>
         <span class="date-updates-text">Updates might take a while, as data is verified from reliable sources.</span>

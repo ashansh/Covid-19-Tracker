@@ -1,0 +1,39 @@
+.footer-container {
+    background-color: lightgray;
+}
+
+.who-image {
+    width: 100%;
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5%;
+    padding-bottom: 2%;
+}
+
+.font-awesome {
+    height: 25px;
+}
+
+a {
+    font-size: 12px;
+    color: black;
+}
+
+.news-api {
+    padding-top: 5px;
+}
+
+.hearts {
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: 12px;
+}
+
+.post-script {
+    font-size: 10px;
+    text-align: center;
+    padding-bottom: 2%;
+}

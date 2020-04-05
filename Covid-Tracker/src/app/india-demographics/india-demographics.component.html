@@ -1,0 +1,105 @@
+<div class="demographics-container">
+    <div class="demographics-title">
+        Coronavirus India Tracker
+    </div>
+    <div class="trend-container">
+        <div *ngIf="showTrendsArray">
+            <ngx-trend
+            autoDraw="true"
+            autoDrawDuration="5000"
+            autoDrawEasing="ease-out"
+            smooth="true"
+            width = "100"
+            height = "50"
+            [data]="confirmedArray"
+            [gradient]="['#cc0000']"
+            radius="8"
+            strokeWidth="1.6"
+            strokeLinecap="round">
+          </ngx-trend>
+          <div class="new-infected">
+            + [{{latestPositiveCases}}]
+          </div>
+          <div class="total-infected">
+            {{totalInfectedCases}}
+          </div>
+          <div class="infected-text">
+            CONFIRMED
+          </div>
+        </div>
+        <div *ngIf="showTrendsArray">
+            <ngx-trend
+            autoDraw="true"
+            autoDrawDuration="6000"
+            autoDrawEasing="ease-out"
+            smooth="true"
+            width = "100"
+            height = "50"
+            [data]="recoveredArray"
+            [gradient]="['#32cd32']"
+            radius="8"
+            strokeWidth="1.6"
+            strokeLinecap="round"> 
+          </ngx-trend>
+          <div class="new-recovered">
+            + [{{latestRecoveredCases}}]
+          </div>
+          <div class="total-recovered">
+            {{totalRecoveredCases}}
+          </div>
+          <div class="recovered-text">
+            RECOVERED
+          </div>
+        </div>
+    </div>
+    <div class="trend-container">
+        <div *ngIf="showTrendsArray">
+            <ngx-trend
+            autoDraw="true"
+            autoDrawDuration="7000"
+            autoDrawEasing="ease-out"
+            smooth="true"
+            width = "100"
+            height = "50"
+            [data]="activeCasesArray"
+            [gradient]="['#148aff']"
+            radius="8"
+            strokeWidth="1.6"
+            strokeLinecap="round">
+          </ngx-trend>
+          <div class="new-active">
+            + [{{latestActive}}]
+          </div>
+          <div class="total-active">
+            {{totalActiveCases}}
+          </div>
+          <div class="active-text">
+            ACTIVE
+          </div>
+        </div>
+        <div *ngIf="showTrendsArray">
+            <ngx-trend
+            autoDraw="true"
+            autoDrawDuration="8000"
+            autoDrawEasing="ease-out"
+            smooth="true"
+            width = "100"
+            height = "50"
+            [data]="deathsArray"
+            [gradient]="['#787878']"
+            radius="8"
+            strokeWidth="1.2"
+            strokeLinecap="round">
+          </ngx-trend>
+          <div class="new-deaths">
+            + [{{latestDeaths}}]
+          </div>
+          <div class="total-deaths">
+            {{totalDeaths}}
+          </div>
+          <div class="deaths-text">
+            DEATHS
+          </div>
+        </div>
+    </div>
+</div>

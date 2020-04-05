@@ -8,6 +8,7 @@ export class FetchCovidDataService {
 
   public apiData = [];
   public filteredApiData = [];
+  public indianDemographicsArray = [];
   public confirmed = 0;
   public recovered = 0;
   public deaths = 0;
@@ -27,8 +28,11 @@ export class FetchCovidDataService {
     this.apiData.forEach(data => {
       Object.keys(data).forEach(globalData => {
         this.filteredApiData.push(data[globalData])
-      })
-    })
+      });
+      data['India'].forEach(element => {
+        this.indianDemographicsArray.push(element);
+      });
+    });
     this.globalCases();
   }
 
@@ -44,6 +48,12 @@ export class FetchCovidDataService {
         }
       })
     })
+  };
+
+  getIndianDemographics() {
+    if(this.indianDemographicsArray.length > 1) {
+      return of(this.indianDemographicsArray);
+    }
   }
 
   getNumberCardsData() {

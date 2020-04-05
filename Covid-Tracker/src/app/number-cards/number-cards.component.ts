@@ -8,15 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NumberCardsComponent implements OnInit {
 
-  public numberData: any = [{"name": "Worldwide Positive Cases", "value": 0}, 
+  public numberData: any = [{"name": "Worldwide Confirmed Cases", "value": 0}, 
   {"name": "Worldwide Recovered Cases", "value": 0},
   {"name": "Worldwide deaths", "value": 0}];
   public showCards = false;
   public view = [700, 400];
   public colorScheme = {
-    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
+    domain: ['#cc0000', '#32cd32', '#787878']
   };
-  public cardColor: string = '#232837';
+  public cardColor: string = '#f8f8f8';
+  public textColor: string = '#5a5a5a'
 
   constructor(private fetchService: FetchCovidDataService) { }
 
@@ -29,6 +30,6 @@ export class NumberCardsComponent implements OnInit {
       this.numberData[2].value = serviceResponse.deaths;
       this.showCards = true;
       this.view.push(300,300);
-    }, 1000)
+    }, 2000)
   }
 }

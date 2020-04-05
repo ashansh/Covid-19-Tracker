@@ -1,17 +1,20 @@
 .header-container {
-    margin-bottom: 5%;
-    margin-right: 5%;
-    margin-left: 5%;
+    margin: 5%;
 }
 
 .header {
     display: flex; 
     margin-bottom: 5%;
-    margin-top: 5%;
 }
 
-.header-image {
-    width: 50px;
+.social-message {
+    padding-left: 20px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    color: grey;
+    font-weight: 800;
+    font-size: small;
 }
 
 .title-text {
@@ -19,7 +22,7 @@
     font-weight: 800;
     color: grey;
     padding-top: 15px;
-    margin-left: 15px;
+    margin-left: 12px;
 }
 .description-container {
     display: flex;
@@ -28,6 +31,7 @@
     margin-bottom: 5%;
 }
 .countries {
+    color: #cc0000;
     font-size: medium;
     margin-bottom: 2%;
     font-weight: 600;
@@ -71,4 +75,17 @@
 
 .date-updates-text {
     font-size: smaller;
+}
+
+#loading {
+    -webkit-animation: rotation 8s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+    from {
+            -webkit-transform: rotate(0deg);
+    }
+    to {
+            -webkit-transform: rotate(359deg);
+    }
 }
