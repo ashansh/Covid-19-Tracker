@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchCovidDataService } from '../services/fetch-covid-data.service';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-india-demographics',
   templateUrl: './india-demographics.component.html',
   styleUrls: ['./india-demographics.component.css']
 })
+
 export class IndiaDemographicsComponent implements OnInit {
 
-  public indiaUpdate : any;
+  public indiaGlobalApiUpdate : any;
+  public indiaLocalApiUpdaate: any;
+  public lastIndiaDataUpdateTime: string = null;
   public totalInfectedCases: number;
   public totalRecoveredCases: number;
   public totalDeaths: number;
@@ -18,11 +22,22 @@ export class IndiaDemographicsComponent implements OnInit {
   public latestDeaths: number;
   public latestActive: number;
   public showTrendsArray = false;
+  public showStateWiseDataTable = false;
+  public sourceLink = '';
 
   public confirmedArray = [];
   public recoveredArray = [];
   public deathsArray = [];
   public activeCasesArray = [];
+  public stateWiseCasesArray: any = [];
+  public samplesTestedArray : any = [];
+  public stateWisDisplayedColumns: string[] = ['state', 'confirmed', 'recovered', 'deaths'];
+  public testAnalysisColumns: string[] = ['Overall Samples Tested', 'Tests Today', 'Last Updated'];
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.stateWiseCasesArray.filter = filterValue.trim().toLowerCase();
+  }
 
   constructor(private fetchService: FetchCovidDataService) { }
 
@@ -30,14 +45,14 @@ export class IndiaDemographicsComponent implements OnInit {
     setTimeout(() => {
       this.fetchService.getIndianDemographics().subscribe(data => {
         if(data) {
-          this.indiaUpdate = data;
+          this.indiaGlobalApiUpdate = data;
           this.createTrendsArray();
-          let length = this.indiaUpdate.length - 1;
+          let length = this.indiaGlobalApiUpdate.length - 1;
           let lastInfected;
           let lastRecovered;
           let lastDeaths;
           let lastActive;
-          this.indiaUpdate.forEach((element, index) => {
+          this.indiaGlobalApiUpdate.forEach((element, index) => {
             if(length === index) {
               this.totalInfectedCases = element.confirmed;
               this.totalRecoveredCases = element.recovered;
@@ -57,11 +72,40 @@ export class IndiaDemographicsComponent implements OnInit {
           });
         };
       })
-    }, 1500);
+    }, 2000);
+    this.getIndiaData();
+  }
+
+  getIndiaData() {
+    this.fetchService.geIndiaTestsData().subscribe((data: any) => {
+      if(data) {
+        this.indiaLocalApiUpdaate = data;
+        this.lastIndiaDataUpdateTime = this.formatDate(data.statewise[0].lastupdatedtime);
+        data.statewise.splice(0,1);
+        data.tested.forEach((tests,index) => {
+          if(data.tested.length === index + 1) {
+            tests.updatetimestamp = this.formatDate(tests.updatetimestamp);
+            this.samplesTestedArray.push(tests);
+            this.sourceLink = tests.source.toLowerCase().includes('icmr') ? 'ICMR' : 'Unknown';
+          }
+        });
+        this.showStateWiseDataTable = true;
+        this.stateWiseCasesArray = new MatTableDataSource(data.statewise);
+        console.log(this.samplesTestedArray);
+      }
+    })
+  }
+
+  formatDate(date) {
+    const day = date.substring(0,2);
+    const month = date.substring(3,5);
+    const year = date.substring(5);
+    const newDate = month + '/' + day + year;
+    return newDate;
   }
 
   createTrendsArray() {
-    this.indiaUpdate.forEach(element => {
+    this.indiaGlobalApiUpdate.forEach(element => {
       if(element.confirmed > 0) {
         this.confirmedArray.push(element.confirmed);
       }

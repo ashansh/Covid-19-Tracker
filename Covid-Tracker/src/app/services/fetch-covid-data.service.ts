@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { from, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +15,29 @@ export class FetchCovidDataService {
   public deaths = 0;
   public dataUpdatedDate = '';
 
+  constructor(private http:HttpClient) { 
+    this.geIndiaTestsData();
+    this.getIndiaStateWiseData();
+  }
+
   getUpdatedCovidData() {
   from(fetch("https://pomber.github.io/covid19/timeseries.json")
   .then(response => response.json()))
   .subscribe(log => {
     this.apiData.push(log);
-    console.log(this.apiData);
+    // console.log(this.apiData);
     this.transformApiResponseData();
   })
+  };
+
+  geIndiaTestsData() {
+    return this.http.get('https://api.covid19india.org/data.json');
+  }
+
+  getIndiaStateWiseData() {
+    this.http.get('https://api.covid19india.org/state_district_wise.json').subscribe(data => {
+      console.log(data);
+    })
   }
 
   transformApiResponseData() {

@@ -1,15 +1,27 @@
 <div class="demographics-container">
+  <div class="title-container">
     <div class="demographics-title">
-        Coronavirus India Tracker
-    </div>
+      Coronavirus India Tracker
+  </div>
+  <div class="image-flag">
+    <img src="assets/india_flag.png" alt="">
+  </div>
+  </div>
+    <div class="date-container" *ngIf="lastIndiaDataUpdateTime">
+      <div class="date-updates">
+          <span class="dot"></span>
+          <span class="date-text">Last updated on :</span>
+      </div>
+      <span class="date-update">{{lastIndiaDataUpdateTime |  date: 'dd MMM, yyyy, h:mm aaa '}}IST</span>
+  </div>
     <div class="trend-container">
         <div *ngIf="showTrendsArray">
             <ngx-trend
             autoDraw="true"
-            autoDrawDuration="5000"
+            autoDrawDuration="6000"
             autoDrawEasing="ease-out"
             smooth="true"
-            width = "100"
+            width = "280"
             height = "50"
             [data]="confirmedArray"
             [gradient]="['#cc0000']"
@@ -30,10 +42,10 @@
         <div *ngIf="showTrendsArray">
             <ngx-trend
             autoDraw="true"
-            autoDrawDuration="6000"
+            autoDrawDuration="7000"
             autoDrawEasing="ease-out"
             smooth="true"
-            width = "100"
+            width = "280"
             height = "50"
             [data]="recoveredArray"
             [gradient]="['#32cd32']"
@@ -56,10 +68,10 @@
         <div *ngIf="showTrendsArray">
             <ngx-trend
             autoDraw="true"
-            autoDrawDuration="7000"
+            autoDrawDuration="8000"
             autoDrawEasing="ease-out"
             smooth="true"
-            width = "100"
+            width = "280"
             height = "50"
             [data]="activeCasesArray"
             [gradient]="['#148aff']"
@@ -80,10 +92,10 @@
         <div *ngIf="showTrendsArray">
             <ngx-trend
             autoDraw="true"
-            autoDrawDuration="8000"
+            autoDrawDuration="9000"
             autoDrawEasing="ease-out"
             smooth="true"
-            width = "100"
+            width = "280"
             height = "50"
             [data]="deathsArray"
             [gradient]="['#787878']"
@@ -102,4 +114,62 @@
           </div>
         </div>
     </div>
-</div>
+
+    <div class="state-table-container" *ngIf = "showStateWiseDataTable">
+      <div class="state-text">State wise analysis</div>
+        <mat-form-field>
+          <mat-label>Filter by State name</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Goa">
+        </mat-form-field>
+          <table mat-table [dataSource]="stateWiseCasesArray" class="mat-elevation-z8">
+            <ng-container matColumnDef="state">
+              <th mat-header-cell *matHeaderCellDef class="state-column"> State </th>
+              <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+            </ng-container>
+            <ng-container matColumnDef="confirmed">
+              <th mat-header-cell *matHeaderCellDef class="confirmed-column"> Confirmed </th>
+              <td mat-cell *matCellDef="let element" [ngClass] = " {'confirmed-column' : element.confirmed > 0 }"> {{element.confirmed}} </td>
+            </ng-container>
+            <ng-container matColumnDef="recovered">
+              <th mat-header-cell *matHeaderCellDef class="recovered-column"> Recovered </th>
+              <td mat-cell *matCellDef="let element" [ngClass] = " {'recovered-column' : element.recovered > 0 }"> {{element.recovered}} </td>
+            </ng-container>
+            <ng-container matColumnDef="deaths">
+              <th mat-header-cell *matHeaderCellDef class="deaths-column"> Deaths </th>
+              <td mat-cell *matCellDef="let element" [ngClass] = " {'deaths-column' : element.deaths > 0 }"> {{element.deaths}} </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="stateWisDisplayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: stateWisDisplayedColumns;"></tr>
+          </table>    
+    </div>
+    <div *ngIf="samplesTestedArray.length > 0" class="state-table-container">
+      <div class="state-text">Tests analysis</div>
+      <table mat-table [dataSource]="samplesTestedArray">
+        <ng-container matColumnDef="Overall Samples Tested">
+          <th mat-header-cell *matHeaderCellDef>Overall Samples Tested</th>
+          <td mat-cell *matCellDef="let element"> {{element.totalsamplestested}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Tests Today">
+          <th mat-header-cell *matHeaderCellDef>Tests Today</th>
+          <td mat-cell *matCellDef="let element"> {{element.samplereportedtoday}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Last Updated">
+          <th mat-header-cell *matHeaderCellDef>Last Updated</th>
+          <td mat-cell *matCellDef="let element"> {{element.updatetimestamp | date: 'medium' }} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="testAnalysisColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: testAnalysisColumns;"></tr>
+      </table> 
+    </div>
+
+    <div *ngIf="sourceLink === 'ICMR'" class="source-container state-table-container">
+        <span class="source-title">Source</span>
+        <a href="{{samplesTestedArray[0].source}}" target="_blank">
+          <img class="icmr-img" src="assets/icmr.png">
+        </a>
+        <span>
+          <marquee class="alert" scrollamount="5">*Please click over image for latest icmr report!</marquee>
+        </span>
+    </div>

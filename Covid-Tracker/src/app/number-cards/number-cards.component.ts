@@ -14,10 +14,9 @@ export class NumberCardsComponent implements OnInit {
   public showCards = false;
   public view = [700, 400];
   public colorScheme = {
-    domain: ['#cc0000', '#32cd32', '#787878']
+    domain: ['#cc0000', '#32cd32', '#CFC0BB']
   };
-  public cardColor: string = '#f8f8f8';
-  public textColor: string = '#5a5a5a'
+  public cardColor: string = '#232837';
 
   constructor(private fetchService: FetchCovidDataService) { }
 

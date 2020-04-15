@@ -12,7 +12,7 @@ export class NewsApiService {
   constructor(private http:HttpClient) { }
 
   initSources(){
-     return this.http.get('http://newsapi.org/v2/top-headlines?country=in&category=health&apiKey='+this.api_key);
+     return this.http.get('http://newsapi.org/v2/top-headlines?country=in&apiKey='+this.api_key);
   }
 
   initArticles(){

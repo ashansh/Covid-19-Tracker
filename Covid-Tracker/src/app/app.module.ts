@@ -16,6 +16,9 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TrendModule } from 'ngx-trend';
 import { NgxSpinnerModule } from "ngx-spinner";
+import {MatTableModule} from '@angular/material/table'
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { NgxSpinnerModule } from "ngx-spinner";
     BrowserAnimationsModule,
     FontAwesomeModule,
     TrendModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

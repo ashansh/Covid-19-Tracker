@@ -19,6 +19,6 @@ export class AppComponent {
     // })
     setTimeout(() => {
       this.spinner.hide();
-    }, 2500);
+    }, 2000);
   }
 }
