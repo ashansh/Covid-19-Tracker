@@ -11,7 +11,7 @@ import {MatTableDataSource} from '@angular/material/table';
 export class IndiaDemographicsComponent implements OnInit {
 
   public indiaGlobalApiUpdate : any;
-  public indiaLocalApiUpdaate: any;
+  public indiaLocalApiUpdate: any;
   public lastIndiaDataUpdateTime: string = null;
   public totalInfectedCases: number;
   public totalRecoveredCases: number;
@@ -79,7 +79,8 @@ export class IndiaDemographicsComponent implements OnInit {
   getIndiaData() {
     this.fetchService.geIndiaTestsData().subscribe((data: any) => {
       if(data) {
-        this.indiaLocalApiUpdaate = data;
+        this.indiaLocalApiUpdate = data;
+        console.log('dfg',this.indiaLocalApiUpdate)
         this.lastIndiaDataUpdateTime = this.formatDate(data.statewise[0].lastupdatedtime);
         data.statewise.splice(0,1);
         data.tested.forEach((tests,index) => {
@@ -91,7 +92,6 @@ export class IndiaDemographicsComponent implements OnInit {
         });
         this.showStateWiseDataTable = true;
         this.stateWiseCasesArray = new MatTableDataSource(data.statewise);
-        console.log(this.samplesTestedArray);
       }
     })
   }

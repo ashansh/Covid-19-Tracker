@@ -42,7 +42,7 @@ import {MatInputModule} from '@angular/material/input';
     NgxSpinnerModule,
     MatTableModule,
     MatFormFieldModule,
-    MatInputModule 
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
